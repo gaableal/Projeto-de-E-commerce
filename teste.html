@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Esporte Shop</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="projeto/images/favicon.jpeg" type="image/x-icon">
+
+  <style>
+    .card-img-top {
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .card:hover .card-img-top {
+      transform: scale(1.1);
+    }
+
+    /* Rolagem suave */
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Esporte Shop</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="#home">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#produtos">Produtos</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#sobre-nos">Sobre Nós</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#contato">Contato</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" data-toggle="modal" data-target="#loginModal">
+          <i class="fas fa-user"></i> Login
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" data-toggle="modal" data-target="#cartModal">
+          <i class="fas fa-shopping-cart"></i> <span class="cart-text">Carrinho</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Modal de Login -->
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+
+        <!-- Título dinâmico que será atualizado conforme o formulário exibido -->
+        <h5 class="modal-title" id="loginModalLabel">Login</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <!-- Formulário de Login -->
+        <form id="loginForm">
+          <div class="form-group">
+            <label for="loginEmail">Email</label>
+            <input type="email" class="form-control" id="loginEmail" placeholder="Seu Email">
+          </div>
+          <div class="form-group">
+            <label for="loginPassword">Senha</label>
+            <input type="password" class="form-control" id="loginPassword" placeholder="Sua Senha">
+          </div>
+          <button type="submit" class="btn btn-primary">Entrar</button>
+        </form>
+        
+        <!-- Formulário de Cadastro de Usuário (inicialmente oculto) -->
+        <form id="signupForm" style="display: none;">
+          <div class="form-group">
+            <label for="signupEmail">Email</label>
+            <input type="email" class="form-control" id="signupEmail" placeholder="Seu Email">
+          </div>
+          <div class="form-group">
+            <label for="signupPassword">Senha</label>
+            <input type="password" class="form-control" id="signupPassword" placeholder="Sua Senha">
+          </div>
+          <div class="form-group">
+            <label for="signupConfirmPassword">Confirmar Senha</label>
+            <input type="password" class="form-control" id="signupConfirmPassword" placeholder="Confirmar Senha">
+          </div>
+          <button type="submit" class="btn btn-primary">Cadastrar</button>
+        </form>
+        
+        <!-- Opção para Cadastrar Usuário -->
+        <p id="signupLink">Não possui uma conta? <a href="#" id="showSignup">Cadastrar usuário</a></p>
+        <!-- Opção para voltar ao Login (inicialmente oculto) -->
+
+        <p id="loginLink" style="display: none;">Já possui uma conta? <a href="#" id="showLogin">Fazer login</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal de Carrinho -->
+<div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="cartModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="cartModalLabel">Carrinho de Compras</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <ul id="cartItems" class="list-group">
+
+          <!-- Itens do carrinho serão inseridos aqui dinamicamente -->
+
+        </ul>
+        <h5 class="mt-3">Total: R$ <span id="cartTotal">0.00</span><h5>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+        <button type="button" class="btn btn-primary">Finalizar Compra</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!-- Home Section -->
+  <header id="home" class="bg-primary text-white text-center py-5">
+    <h1>Bem-vindo à Esporte Shop</h1>
+    <p>Encontre os melhores produtos para o seu esporte favorito!</p>
+  </header>
+
+  <!-- Produtos Section -->
+  <div id="produtos" class="container my-5">
+    <div class="row">
+
+     <!-- Produto 1 -->
+    <div class="col-md-4">
+      <div class="card">
+        <img src="projeto/images/bola-de-futebol.jpeg" class="card-img-top" alt="Bola de Futebol">
+        <div class="card-body">
+          <h5 class="card-title">Bola de Futebol</h5>
+          <p class="card-text">Bola oficial tamanho 5, ideal para jogos profissionais e amadores.</p>
+          <h5 class="card-text">Preço: R$ 100,00</h5>
+          <a href="#" class="btn btn-primary add-to-cart" data-product-id="1" data-product-price="100.00">Comprar</a>
+        </div>
+      </div>
+    </div>
+      <!-- Produto 2 -->
+      <div class="col-md-4">
+        <div class="card">
+          <img src="projeto/images/tenis-esportivo.jpeg" class="card-img-top" alt="Tênis de Corrida">
+          <div class="card-body">
+            <h5 class="card-title">Tênis de Corrida</h5>
+            <p class="card-text">Tênis de corrida com amortecimento avançado para máximo conforto.</p>
+            <h5 class="card-text">Preço: R$ 250,00</h5>
+            <a href="#" class="btn btn-primary add-to-cart" data-product-id="2" data-product-price="250.00">Comprar</a>
+          </div>
+        </div>
+      </div>
+      <!-- Produto 3 -->
+      <div class="col-md-4">
+        <div class="card">
+          <img src="projeto/images/luva-de-boxe.jpeg" class="card-img-top" alt="Luvas de Boxe">
+          <div class="card-body">
+            <h5 class="card-title">Luvas de Boxe</h5>
+            <p class="card-text">Luvas de boxe em couro sintético, ideais para treinos e competições.</p>
+            <h5 class="card-text">Preço: R$ 150,00</h5>
+            <a href="#" class="btn btn-primary add-to-cart" data-product-id="3" data-product-price="150.00">Comprar</a>
+          </div>
+        </div>
+      </div>
+      <!-- Produto 4 -->
+      <div class="col-md-4">
+        <div class="card">
+          <img src="projeto/images/raquete.jpeg" class="card-img-top" alt="Raquete de Tênis">
+          <div class="card-body">
+            <h5 class="card-title">Raquete de Tênis</h5>
+            <p class="card-text">Raquete de tênis leve e resistente, ideal para jogadores intermediários.</p>
+            <h5 class="card-text">Preço: R$ 160,00</h5>
+            <a href="#" class="btn btn-primary add-to-cart" data-product-id="4" data-product-price="160.00">Comprar</a>
+          </div>
+        </div>
+      </div>
+      <!-- Produto 5 -->
+      <div class="col-md-4">
+        <div class="card">
+          <img src="projeto/images/camisa-ciclismo.jpeg" class="card-img-top" alt="Camisa de Ciclismo">
+          <div class="card-body">
+            <h5 class="card-title">Camisa de Ciclismo</h5>
+            <p class="card-text">Camisa de ciclismo com tecido respirável e design ergonômico.</p>
+            <h5 class="card-text">Preço: R$ 170,00</h5>
+            <a href="#" class="btn btn-primary add-to-cart" data-product-id="5" data-product-price="170.00">Comprar</a>
+          </div>
+        </div>
+      </div>
+      <!-- Produto 6 -->
+      <div class="col-md-4">
+        <div class="card">
+          <img src="projeto/images/halteres.jpeg" class="card-img-top" alt="Halteres">
+          <div class="card-body">
+            <h5 class="card-title">Halteres</h5>
+            <p class="card-text">Conjunto de halteres ajustáveis, perfeito para treinos de força em casa.</p>
+            <h5 class="card-text">Preço: R$ 250,00</h5>
+            <a href="#" class="btn btn-primary add-to-cart" data-product-id="6" data-product-price="250.00">Comprar</a>
+          </div>
+        </div>
+      </div>
+      <!-- Produto 7 -->
+      <div class="col-md-4">
+        <div class="card">
+          <img src="projeto/images/mochila.jpeg" class="card-img-top" alt="Mochila de Hidratação">
+          <div class="card-body">
+            <h5 class="card-title">Mochila de Hidratação</h5>
+            <p class="card-text">Mochila leve com reservatório de água, perfeita para longas caminhadas e corridas.</p>
+            <h5 class="card-text">Preço: R$ 280,00</h5>
+            <a href="#" class="btn btn-primary add-to-cart" data-product-id="7" data-product-price="280.00">Comprar</a>
+          </div>
+        </div>
+      </div>
+      <!-- Produto 8 -->
+      <div class="col-md-4">
+        <div class="card">
+          <img src="projeto/images/rolo.jpeg" class="card-img-top" alt="Rolo de Espuma para Massagem">
+          <div class="card-body">
+            <h5 class="card-title">Rolo de Espuma para Massagem</h5>
+            <p class="card-text">Rolo de espuma para liberação miofascial, ideal para recuperação muscular.</p>
+            <h5 class="card-text">Preço: R$ 80,00</h5>
+            <a href="#" class="btn btn-primary add-to-cart" data-product-id="8" data-product-price="80.00">Comprar</a>
+          </div>
+        </div>
+      </div>
+      <!-- Produto 9 -->
+      <div class="col-md-4">
+        <div class="card">
+          <img src="projeto/images/capacete.jpeg" class="card-img-top" alt="Capacete de Ciclismo">
+          <div class="card-body">
+            <h5 class="card-title">Capacete de Ciclismo</h5>
+            <p class="card-text">Capacete leve e ventilado, garantindo segurança e conforto durante o ciclismo.</p>
+            <h5 class="card-text">Preço: R$ 125,00</h5>
+      <a href="#" class="btn btn-primary add-to-cart" data-product-id="9" data-product-price="125.00">Comprar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sobre Nós Section -->
+  <section id="sobre-nos" class="bg-light py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <img src="projeto/images/tela.jpeg" class="card-img-top" alt="Imagem Sobre Nós">
+        </div>
+        <div class="col-md-6">
+          <h2 class="mb-4 text-center">Sobre Nós</h2>
+          <p class="lead">A Esporte Shop é a sua loja de confiança para artigos esportivos de alta qualidade. Fundada em 2023, nossa missão é fornecer aos atletas produtos que maximizem o desempenho e o conforto durante a prática esportiva. Contamos com uma equipe dedicada e apaixonada por esportes, pronta para oferecer o melhor atendimento.
+          Valorizamos a qualidade, a inovação e o compromisso com a satisfação dos nossos clientes. Estamos aqui para ajudá-lo a alcançar seus objetivos esportivos com os melhores produtos do mercado.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contato Section -->
+  <section id="contato" class="py-5">
+    <div class="container">
+      <h2 class="text-center">Contato</h2>
+      <form>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="nome">Nome</label>
+            <input type="text" class="form-control" id="nome" placeholder="Seu Nome">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" placeholder="Seu Email">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="mensagem">Mensagem</label>
+          <textarea class="form-control" id="mensagem" rows="4" placeholder="Sua Mensagem"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Enviar</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Bibliotecas JavaScript -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<!-- Font Awesome para os ícones -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+<!-- Seu script personalizado -->
+<script src="teste.js"></script>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3">
+      <p>&copy; 2024 Artigos Esportivos. Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>
