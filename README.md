@@ -41,5 +41,5 @@ Este é um projeto simples de e-commerce que inclui funcionalidades básicas com
 
 - **Adicionar ao Carrinho:** Clique no botão "Adicionar ao Carrinho" em qualquer produto. Uma mensagem de confirmação aparecerá por 3 segundos.
 - **Visualizar Carrinho:** Clique no ícone do carrinho para ver os itens adicionados.
-- **Remover do Carrinho:** Dentro do modal do carrinho, clique no botão de remoção (X) ao lado do produto que deseja remover.
+- **Remover do Carrinho:** Dentro do modal do carrinho, clique no botão de remoção (X) ao lado do produto que deseja remover o item.
 
